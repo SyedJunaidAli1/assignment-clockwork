@@ -5,7 +5,9 @@ export default function Home() {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/shop/message/c3abnk-qk.myshopify.com")
+    fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/shop/message/c3abnk-qk.myshopify.com`,
+    )
       .then((res) => res.json())
       .then((data) => setMessage(data.message));
   }, []);
