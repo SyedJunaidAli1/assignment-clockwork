@@ -13,7 +13,7 @@ export default function Home() {
   }, []);
 
   const saveMessage = async () => {
-    await fetch("http://localhost:5000/api/shop/message", {
+    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/shop/message`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

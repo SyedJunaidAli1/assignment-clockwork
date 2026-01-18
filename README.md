@@ -1,36 +1,117 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Shopify Assignment ClockWork – Frontend (Admin UI)
 
-## Getting Started
+This is the frontend admin interface for the Shopify Post-Purchase application.
+It allows merchants to view and update the post-purchase message that is shown to customers after checkout.
 
-First, run the development server:
+## 🚀 Tech Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Next.js
+
+React
+
+TypeScript
+
+Fetch API
+
+CSS / basic styling
+
+## 🧠 Purpose of the Frontend
+
+The frontend serves as the Shopify Admin UI where merchants can:
+
+View the current post-purchase message
+
+Update the message via a simple form
+
+Save the message to the backend server
+
+This UI is accessed after app installation, when the merchant is redirected from Shopify to the app.
+
+## 📁 Folder Structure (Simplified)
+```
+frontend/
+├── app/
+│   └── page.tsx
+├── public/
+├── .env.example
+├── package.json
+└── README.md
+```
+🔐 Environment Variables
+
+Create a .env.local file using .env.example as a reference.
+```
+NEXT_PUBLIC_API_URL=http://localhost:5000
+NEXT_PUBLIC_SHOP_DOMAIN=
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ⚙️ Installation & Setup
+1️⃣ Install dependencies
+```
+bun install
+```
+2️⃣ Start the development server
+```
+bun run dev
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The frontend will run on:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+http://localhost:3000
 
-## Learn More
+## 🔁 Data Flow
+```
+Shopify Admin
+   ↓
+Frontend (Next.js)
+   ↓
+Backend API (Express)
+   ↓
+MongoDB
+```
+Example:
 
-To learn more about Next.js, take a look at the following resources:
+Frontend fetches the current post-purchase message
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Merchant updates the message
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Frontend sends update request to backend
 
-## Deploy on Vercel
+Backend saves the message in MongoDB
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🧩 Relationship with Post-Purchase Extension
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The frontend does not run inside checkout
+
+It is used only for configuration
+
+The post-purchase UI extension runs in Shopify’s checkout environment
+
+For the core assignment:
+
+The extension displays a static message
+
+The frontend demonstrates how merchants could configure this message
+
+This separation follows Shopify’s official architecture.
+
+## 📝 Notes & Assumptions
+
+Authentication and session handling are kept minimal for assignment scope
+
+The shop domain is hardcoded via environment variables
+
+UI styling is intentionally simple
+
+Production deployment is not required
+
+## ✅ Assignment Coverage
+
+✔ Admin UI implemented
+
+✔ Message editing supported
+
+✔ Backend integration complete
+
+✔ Clear separation of concerns
