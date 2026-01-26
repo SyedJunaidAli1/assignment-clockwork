@@ -4,16 +4,26 @@ import { useEffect, useState } from "react";
 export default function Home() {
   const [message, setMessage] = useState("");
 
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
   useEffect(() => {
-    fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/shop/message/c3abnk-qk.myshopify.com`,
-    )
+    if (!apiUrl) {
+      alert("Api Url is not Found");
+      return;
+    }
+
+    fetch(`${apiUrl}/api/shop/message/c3abnk-qk.myshopify.com`)
       .then((res) => res.json())
       .then((data) => setMessage(data.message));
-  }, []);
+  }, [apiUrl]);
 
   const saveMessage = async () => {
-    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/shop/message`, {
+    if (!apiUrl) {
+      alert("Api Url is Missing");
+      return;
+    }
+
+    await fetch(`${apiUrl}/api/shop/message`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
