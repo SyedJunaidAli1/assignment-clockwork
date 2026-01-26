@@ -40,7 +40,7 @@ export default function Home() {
       <input
         value={message}
         onChange={(e) => setMessage(e.target.value)}
-        style={{ width: "100%", padding: 10 }}
+        className="w-full px-2 py-4 border rounded"
       />
       <br />
       <br />
